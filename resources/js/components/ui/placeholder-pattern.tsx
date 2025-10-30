@@ -2,7 +2,7 @@ import { useId } from 'react';
 
 interface PlaceholderPatternProps {
     className?: string;
-}
+} 
 
 export function PlaceholderPattern({ className }: PlaceholderPatternProps) {
     const patternId = useId();

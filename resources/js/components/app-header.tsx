@@ -32,8 +32,7 @@ import { cn, isSameUrl, resolveUrl } from '@/lib/utils';
 import { dashboard, notes } from '@/routes';
 import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutDashboard, Menu, Search, NotebookPen } from 'lucide-react';
-import AppLogo from './app-logo';
+import { LayoutDashboard, Menu, NotebookPen, Search } from 'lucide-react';
 import AppLogoIcon from './app-logo-icon';
 
 const mainNavItems: NavItem[] = [
@@ -45,8 +44,8 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Notes',
         href: notes(),
-        icon: NotebookPen   
-    }
+        icon: NotebookPen,
+    },
 ];
 
 const rightNavItems: NavItem[] = [
@@ -143,15 +142,14 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                             </SheetContent>
                         </Sheet>
                     </div>
-
-                    <Link
+                    {/* Uncomment below to add icon in top left */}
+                    {/* <Link
                         href={dashboard()}
                         prefetch
                         className="flex items-center space-x-2"
                     >
                         <AppLogo />
-                    </Link>
-
+                    </Link> */}
                     {/* Desktop Navigation */}
                     <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
                         <NavigationMenu className="flex h-full items-stretch">
@@ -188,7 +186,6 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                             </NavigationMenuList>
                         </NavigationMenu>
                     </div>
-
                     <div className="ml-auto flex items-center space-x-2">
                         <div className="relative flex items-center space-x-1">
                             <Button

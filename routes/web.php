@@ -18,7 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('notes', function () {
-        return Inertia::render('notes');
+        return Inertia::render('dashboard_menus/notes');
     })->name('notes');
 });
 
