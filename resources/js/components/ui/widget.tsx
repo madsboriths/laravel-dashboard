@@ -1,5 +1,7 @@
 export function Widget() {
-    return <img
-      src="/images/kitty.jpeg"
-    />
+    return (
+        <div>
+            <img className="rounded-3xl" src="/images/kitty.jpeg"></img>
+        </div>
+    )
 }
