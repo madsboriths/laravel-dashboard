@@ -5,31 +5,23 @@ import { Head } from '@inertiajs/react';
 
 const widgets: WidgetItem[] = [
     {
-        image: '/images/examples/Daylio.jpg',
-        href: '/mood',
-        alt: 'Daylio report',
-    },
-    {
-        image: '/images/examples/frog.jpg',
-        alt: 'Frog photo',
-    },
-    {
-        image: '/images/examples/dog.jpg',
-        alt: 'Dog photo',
+        image: '/images/examples/kitty.jpeg',
+        href: '/gallery/kitty',
+        alt: 'Kitty photo',
     },
 ];
 
-export default function Dashboard() {
+export default function Mood() {
     return (
         <AppLayout>
-            <Head title="Dashboard" />
+            <Head title="Mood" />
             <WidgetGallery className="py-4">
                 {widgets.map((item, i) => (
                     <Widget
                         key={i}
                         href={item.href}
                         image={item.image}
-                        alt={item.alt}
+                        aria-label={item.alt} // helpful for a11y on links
                         className="block overflow-hidden rounded-2xl"
                     />
                 ))}

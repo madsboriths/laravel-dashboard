@@ -22,4 +22,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('notes');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('mood', function () {
+        return Inertia::render('mood');
+    })->name('mood');
+});
+
+
 require __DIR__ . '/settings.php';

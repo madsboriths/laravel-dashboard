@@ -1,46 +1,27 @@
-import { CardContent } from "./card"
+import { cn } from "@/lib/utils";
 
-export function Widget({ className, ...props }: React.ComponentProps<"div">) {
-    return (
-        <div 
-            data-slot="widget"
-            {...props}/>
-    )
+type WidgetProps = {
+  href?: string;
+  image?: string;
+  alt?: string;
+} & React.ComponentProps<"a">;
+
+export function Widget({href, image, alt, ...props}: WidgetProps) {
+  return (
+    <a data-slot="widget" href={href} {...props}>
+      {image && <img src={image} alt={alt ?? ""} />}
+    </a>
+  );
 }
 
-
-type WidgetContentProps = {
-  src: string
-  alt?: string
-} & React.ComponentProps<"img">
-
-export function WidgetContent({src, alt, ...props}: WidgetContentProps) {
-    return <img 
-        src={src} 
-        alt={alt}
-        {...props}/>
-}
-
-// export function WidgetOverlay({}){
-    
-// }
-
-// export function WidgetOverlay({}){
-    
-// }
-
-type WidgetGalleryProps = React.ComponentProps<typeof Widget> & {
-  images: string[];
-};
-
-export function WidgetGallery({images, ...props}: WidgetGalleryProps) {
+export function WidgetGallery({className, children, ...props}: React.ComponentProps<"div">) {
     return (
-        <div className="m-6 gap-6 md:columns-2 lg:columns-3">
-            {images.map((src, i) => (
-                <Widget key={src} {...props}>
-                    <WidgetContent className="rounded-xl" src={src} alt={`Image ${i + 1}`} />
-                </Widget>
-            ))}
+        <div className={cn("m-6 gap-6 md:columns-2 lg:columns-3", className)} {...props}>
+            {children}
         </div>
-    )
+    );
 }
+
+// export function WidgetOverlay({}){
+    
+// }
