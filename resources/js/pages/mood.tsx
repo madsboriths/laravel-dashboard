@@ -1,31 +1,24 @@
-import { Widget, WidgetGallery } from '@/components/ui/widget';
+import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-import { WidgetItem } from '@/types';
-import { Head } from '@inertiajs/react';
-
-const widgets: WidgetItem[] = [
-    {
-        image: '/images/examples/kitty.jpeg',
-        href: '/gallery/kitty',
-        alt: 'Kitty photo',
-    },
-];
+import { Head, router, usePage } from '@inertiajs/react';
 
 export default function Mood() {
+    function handleSync() {
+        router.post('/mood/sync');
+        // or: router.post(route('mood.sync')) if you have Ziggy
+    }
+    const { flash } = usePage().props as { flash?: { status?: string } };
+
     return (
         <AppLayout>
             <Head title="Mood" />
-            <WidgetGallery className="py-4">
-                {widgets.map((item, i) => (
-                    <Widget
-                        key={i}
-                        href={item.href}
-                        image={item.image}
-                        aria-label={item.alt} // helpful for a11y on links
-                        className="block overflow-hidden rounded-2xl"
-                    />
-                ))}
-            </WidgetGallery>
+            <Button className="w-3xl" onClick={handleSync}>
+                Sync Daylio Data
+            </Button>
+
+            {flash?.status && (
+                <p className="text-sm text-green-600">{flash.status}</p>
+            )}
         </AppLayout>
     );
 }

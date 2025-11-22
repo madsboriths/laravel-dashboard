@@ -17,13 +17,17 @@ const widgets: WidgetItem[] = [
         image: '/images/examples/dog.jpg',
         alt: 'Dog photo',
     },
+    {
+        image: '/images/examples/Dog2.jpg',
+        alt: 'Dog photo',
+    },
 ];
 
 export default function Dashboard() {
     return (
         <AppLayout>
             <Head title="Dashboard" />
-            <WidgetGallery className="py-4">
+            <WidgetGallery className="space-y-6 py-4">
                 {widgets.map((item, i) => (
                     <Widget
                         key={i}
