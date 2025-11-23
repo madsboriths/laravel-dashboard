@@ -1,24 +1,25 @@
+import { ChartLineDotsColors } from '@/components/chart-line-dots-colors';
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
+import { MoodPoints } from '@/types/types';
 import { Head, router, usePage } from '@inertiajs/react';
 
 export default function Mood() {
+    const { chartData } = usePage<MoodPoints>().props;
+
     function handleSync() {
         router.post('/mood/sync');
-        // or: router.post(route('mood.sync')) if you have Ziggy
     }
-    const { flash } = usePage().props as { flash?: { status?: string } };
 
     return (
         <AppLayout>
             <Head title="Mood" />
-            <Button className="w-3xl" onClick={handleSync}>
-                Sync Daylio Data
-            </Button>
-
-            {flash?.status && (
-                <p className="text-sm text-green-600">{flash.status}</p>
-            )}
+            <div className="space-y-6 py-4">
+                <Button className="cursor-pointer" onClick={handleSync}>
+                    Sync Daylio data
+                </Button>
+            </div>
+            <ChartLineDotsColors chartData={chartData} />
         </AppLayout>
     );
 }

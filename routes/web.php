@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\DataImportController;
+use App\Http\Controllers\MoodChartController;
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
@@ -12,15 +13,22 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+    
     Route::get('notes', function () {
         return Inertia::render('dashboard_menus/notes');
     })->name('notes');
-    Route::get('mood', function () {
-        return Inertia::render('mood');
-    })->name('mood');
+    
+    // Route::get('mood', function () {
+    //     return Inertia::render('mood');
+    // })->name('mood');
+    
+    Route::get('mood', [MoodChartController::class, 'index'])
+        ->name('mood.index');
+
     Route::post('mood/sync', [DataImportController::class, 'importDaylio'])
         ->name('mood.sync');
 });

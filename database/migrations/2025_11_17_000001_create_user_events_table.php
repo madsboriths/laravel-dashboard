@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('value')->nullable(); 
             $table->string('unit')->nullable();  
 
-            $table->json('inline_metrics')->nullable();
+            
             $table->json('raw_payload')->nullable(); 
 
             $table->timestamps();

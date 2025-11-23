@@ -16,7 +16,7 @@ export function Widget({href, image, alt, ...props}: WidgetProps) {
 
 export function WidgetGallery({className, children, ...props}: React.ComponentProps<"div">) {
     return (
-        <div className={cn("m-6 gap-6 md:columns-2 lg:columns-3", className)} {...props}>
+        <div className={cn("gap-6 md:columns-2 lg:columns-3", className)} {...props}>
             {children}
         </div>
     );

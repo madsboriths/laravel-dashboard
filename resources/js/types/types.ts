@@ -3,3 +3,6 @@ export type WidgetItem = {
     href?: string; // optional link
     alt?: string; // optional but recommended
 };
+
+export type MoodPoint = { date: string; mood: number };
+export type MoodPoints = { chartData: MoodPoint[] };
